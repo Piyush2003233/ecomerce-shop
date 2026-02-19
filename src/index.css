@@ -1,13 +1,45 @@
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #c6d5e0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.custom-header {
+  background: linear-gradient(90deg, #000211f1, #000000f0);
+}
+
+/* navbar height */
+.navbar {
+  height: 80px;
+}
+
+/* HERO */
+.hero {
+  width: 100%;
+  height: calc(100vh - 80px);
+  margin-top: 80px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+
+  transition: background-image 1s ease-in-out;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  margin: 20px 0;
+  font-size: 18px;
 }
