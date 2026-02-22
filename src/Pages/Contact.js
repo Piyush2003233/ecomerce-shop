@@ -86,9 +86,9 @@ const Contact = () => {
       {/* COLUMN 1 */}
       <div className="footer-col ">
         <h4>Store Location</h4>
-        <p>500 Terry Francine Street</p>
-        <p>San Francisco, CA 94158</p>
-        <p>info@mysite.com</p>
+        <p>500 Street</p>
+        <p>Bhavnagar, CA 94158</p>
+        <p>info@my.com</p>
         <p>123-456-7890</p>
 
         <div className="social-icons">

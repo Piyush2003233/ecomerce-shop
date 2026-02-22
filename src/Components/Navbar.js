@@ -1,82 +1,100 @@
-import React, { useState } from "react";
+import React,{useState,useContext} from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { CartContext } from "../CartContext";
+import { SearchContext } from "../SearchContext";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar=()=>{
 
-  return (
-    <nav className="navbar navbar-expand-md navbar-dark custom-header fixed-top">
-      <div className="container-fluid px-4">
+const [isOpen,setIsOpen]=useState(false);
+const {cart}=useContext(CartContext);
+const {setSearch}=useContext(SearchContext);
+return(
 
-        {/* Logo */}
-        <Link className="navbar-brand" to="/">
-          <img src={logo} alt="logo" width="55" />
-        </Link>
+<nav className="navbar navbar-expand-md navbar-dark custom-header fixed-top">
+<div className="container-fluid px-4">
 
-        {/* Toggle Button */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+{/* Logo */}
+<Link className="navbar-brand" to="/">
+<img src={logo} alt="" width="55"/>
+</Link>
 
-        {/* Collapse Content */}
-        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
+{/* Toggle */}
+<button className="navbar-toggler" onClick={()=>setIsOpen(!isOpen)}>
+<span className="navbar-toggler-icon"></span>
+</button>
 
-          {/* Center Menu */}
-          <ul className="navbar-nav mx-auto text-center">
+<div className={`collapse navbar-collapse ${isOpen?"show":""}`}>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>
-                Home
-              </Link>
-            </li>
+{/* CENTER MENU */}
+<ul className="navbar-nav mx-auto text-center">
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/products" onClick={() => setIsOpen(false)}>
-                Products
-              </Link>
-            </li>
+<li className="nav-item">
+<Link className="nav-link" to="/">Home</Link>
+</li>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/about" onClick={() => setIsOpen(false)}>
-                About
-              </Link>
-            </li>
+<li className="nav-item">
+<Link className="nav-link" to="/product">Products</Link>
+</li>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact" onClick={() => setIsOpen(false)}>
-                Contact
-              </Link>
-            </li>
+<li className="nav-item">
+<Link className="nav-link" to="/about">About</Link>
+</li>
 
-          </ul>
+<li className="nav-item">
+<Link className="nav-link" to="/contact">Contact</Link>
+</li>
 
-          {/* Right Side */}
-          <div className="d-flex align-items-center justify-content-center mt-3 mt-md-0">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-            />
-            <button className="btn btn-outline-light me-3">Search</button>
+</ul>
 
-            <Link to="/cart" className="text-white fs-4 me-3">
-              🛒
-            </Link>
+{/* RIGHT SIDE */}
+<div className="d-flex align-items-center">
 
-            <Link to="/Auth" className="text-white fs-4">
-              👤
-            </Link>
-          </div>
+{/* SEARCH वापस */}
+<input
+className="form-control me-2"
+placeholder="Search products..."
+onChange={e=>setSearch(e.target.value)}
+/>
 
-        </div>
-      </div>
-    </nav>
-  );
+<button className="btn btn-outline-light me-3">
+Search
+</button>
+
+{/* CART */}
+<Link to="/cart" className="text-white fs-4 me-3 position-relative">
+
+🛒
+
+{cart.length>0 &&(
+<span style={{
+position:"absolute",
+top:-8,
+right:-10,
+background:"red",
+color:"#fff",
+borderRadius:"50%",
+padding:"2px 6px",
+fontSize:12
+}}>
+{cart.length}
+</span>
+)}
+
+</Link>
+
+{/* USER */}
+<Link to="/Auth" className="text-white fs-4">
+👤
+</Link>
+
+</div>
+
+</div>
+</div>
+</nav>
+
+);
 };
 
-export default Navbar;
+export default Navbar;  

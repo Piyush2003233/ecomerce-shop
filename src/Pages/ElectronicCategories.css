@@ -1,0 +1,23 @@
+.electronic-box{
+  background:white;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.electronic-box:hover{
+  transform:translateY(-6px);
+}
+
+.electronic-box img{
+  height:150px;
+  object-fit:contain;
+}
+
+.see-more{
+  text-decoration:none;
+  font-weight:600;
+}
+.container{
+  margin: 100px;
+}
